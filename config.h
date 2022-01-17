@@ -6,10 +6,9 @@
 /* test */
 
 /* TODO: mod+; and mod+' should be switch tag left and right */
-/* TODO: mod+; and mod+' should be switch tag left and right */
 /* TODO: don't allow tag left and right to cycle between 1 and 9 */
 /* TODO: mod+H/L to no cycle at end/beginning of tags list */
-/* TODO: mod+\, mod+N to switch between current and next (not previous) tag */
+/* TODO: mod+[/] to no cycle at end/beginning of tags list */
 
 #define TERMINAL "st"
 #define TERMCLASS "St"
@@ -29,8 +28,10 @@ static int smartgaps          = 0;        /* 1 means no outer gap when there is 
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
 static char *fonts[]          = { "monospace:size=16", "JoyPixels:pixelsize=16:antialias=true:autohint=true"  };
-static char normbgcolor[]           = "#222222";
+/* static char normbgcolor[]           = "#222222"; */
+static char normbgcolor[]           = "#000000";
 /* static char normbordercolor[]       = "#000000"; */
+/* static char normbordercolor[]       = "#222222"; */
 static char normbordercolor[]       = "#222222";
 static char normfgcolor[]           = "#bbbbbb";
 static char selfgcolor[]            = "#eeeeee";
@@ -56,7 +57,14 @@ static Sp scratchpads[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "1", "2", "3", "4"};
+
+
+static const unsigned int ulinepad	= 5;	/* horizontal padding between the underline and tag */
+static const unsigned int ulinestroke	= 2;	/* thickness / height of the underline */
+static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the bar the line should appear */
+static const int ulineall 		= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
+
 
 /* swallow emacs */
 static const char emacsclient[] = "emacsclient";
@@ -152,23 +160,21 @@ ResourcePref resources[] = {
 
 static Key keys[] = {
 
-
-
 	/* modifier                     key        function        argument */
 	STACKKEYS(MODKEY,                          focus)
 	STACKKEYS(MODKEY|ShiftMask,                push)
 	/* { MODKEY|ShiftMask,		XK_Escape,	spawn,	SHCMD("") }, */
 	{ MODKEY|ShiftMask,		XK_grave,	spawn,	SHCMD("dmenuunicode") },
-	/* { MODKEY|ShiftMask,		XK_grave,	togglescratch,	SHCMD("") }, */
+	/* TAGKEYS(			XK_1,		spawn,	SHCMD("") }, */ 
+	/* TAGKEYS(			XK_2,		spawn,	SHCMD("") }, */ 
+	/* TAGKEYS(			XK_3,		spawn,	SHCMD("") }, */ 
+	/* TAGKEYS(			XK_4,		spawn,	SHCMD("") }, */ 
+	/* TAGKEYS(			XK_5,		spawn,	SHCMD("") }, */ 
+	/* TAGKEYS(			XK_6,		spawn,	SHCMD("") }, */ 
 	TAGKEYS(			XK_1,		0)
 	TAGKEYS(			XK_2,		1)
 	TAGKEYS(			XK_3,		2)
 	TAGKEYS(			XK_4,		3)
-	TAGKEYS(			XK_5,		4)
-	TAGKEYS(			XK_6,		5)
-	TAGKEYS(			XK_7,		6)
-	TAGKEYS(			XK_8,		7)
-	TAGKEYS(			XK_9,		8)
 	{ MODKEY,			XK_0,		view,		{.ui = ~0 } },
 	{ MODKEY|ShiftMask,		XK_0,		tag,		{.ui = ~0 } },
 	{ MODKEY,			XK_minus,	spawn,		SHCMD("pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)") },
@@ -178,8 +184,6 @@ static Key keys[] = {
 	{ MODKEY,			XK_BackSpace,	spawn,		SHCMD("sysact") },
 	{ MODKEY|ShiftMask,		XK_BackSpace,	spawn,		SHCMD("sysact") },
 	{ MODKEY|ShiftMask,		XK_semicolon,	spawn,		SHCMD("xsel | festival --tts") },
-	/* { MODKEY,			XK_semicolon,	view,		{0} }, */
-
 
 	/* { MODKEY|ShiftMask,		XK_Tab,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_q,		killclient,	{0} },
@@ -369,4 +373,3 @@ static Button buttons[] = {
 	{ ClkTagBar,		0,		Button5,	shiftview,	{.i = 1} },
 	{ ClkRootWin,		0,		Button2,	togglebar,	{0} },
 };
-
