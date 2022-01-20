@@ -6,8 +6,7 @@
 /* test */
 
 /* TODO: mod+; and mod+' should be switch tag left and right */
-/* TODO: don't allow tag left and right to cycle between 1 and 9 */
-/* TODO: mod+H/L to no cycle at end/beginning of tags list */
+/* DONE: don't allow tag left and right to cycle between 1 and last */
 /* TODO: mod+[/] to no cycle at end/beginning of tags list */
 
 #define TERMINAL "st"
@@ -28,15 +27,11 @@ static int smartgaps          = 0;        /* 1 means no outer gap when there is 
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
 static char *fonts[]          = { "monospace:size=16", "JoyPixels:pixelsize=16:antialias=true:autohint=true"  };
-/* static char normbgcolor[]           = "#222222"; */
 static char normbgcolor[]           = "#000000";
-/* static char normbordercolor[]       = "#000000"; */
-/* static char normbordercolor[]       = "#222222"; */
 static char normbordercolor[]       = "#222222";
 static char normfgcolor[]           = "#bbbbbb";
 static char selfgcolor[]            = "#eeeeee";
 static char selbordercolor[]        = "#8b1a1a";
-/* static char selbgcolor[]            = "#005577"; */
 static char selbgcolor[]            = "#000000";
 static char *colors[][3] = {
        /*               fg           bg           border   */
@@ -59,17 +54,14 @@ static Sp scratchpads[] = {
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4"};
 
-
 static const unsigned int ulinepad	= 5;	/* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke	= 2;	/* thickness / height of the underline */
 static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the bar the line should appear */
 static const int ulineall 		= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
 
-
 /* swallow emacs */
 static const char emacsclient[] = "emacsclient";
 static const char emacsname[] = "emacs@";
-
 
 static const Rule rules[] = {
 	/* xprop(1):
