@@ -178,7 +178,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_semicolon,	spawn,		SHCMD("xsel | festival --tts") },
 
 	/* { MODKEY|ShiftMask,		XK_Tab,		spawn,		SHCMD("") }, */
-	{ MODKEY,			XK_q,		killclient,	{0} },
+	/* { MODKEY,			XK_q,		killclient,	{0} }, */
 	{ MODKEY,			XK_p,		killclient,	{0} },
 	/* { MODKEY|ShiftMask,		XK_q,		spawn,		SHCMD("sysact") }, */
 	{ MODKEY,		        XK_m,		spawn,		SHCMD("emacsclient -c") },
@@ -198,8 +198,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_t,		setlayout,	{.v = &layouts[1]} }, /* bstack */
 	/* { MODKEY,			XK_y,		setlayout,	{.v = &layouts[2]} }, /\* spiral *\/ */
 	/* { MODKEY|ShiftMask,		XK_y,		setlayout,	{.v = &layouts[3]} }, /\* dwindle *\/ */
-	{ MODKEY,			XK_u,		setlayout,	{.v = &layouts[4]} }, /* deck */
-	{ MODKEY|ShiftMask,		XK_u,		setlayout,	{.v = &layouts[5]} }, /* monocle */
+	{ MODKEY,			XK_r,		setlayout,	{.v = &layouts[4]} }, /* deck */
+	{ MODKEY, 			XK_g,		setlayout,	{.v = &layouts[5]} }, /* monocle */
 	/* { MODKEY,			XK_i,		setlayout,	{.v = &layouts[6]} }, /\* centeredmaster *\/ */
 	/* { MODKEY|ShiftMask,		XK_i,		setlayout,	{.v = &layouts[7]} }, /\* centeredfloatingmaster *\/ */
 	/* { MODKEY,			XK_w,		incnmaster,     {.i = +1 } }, */
@@ -220,15 +220,18 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_s,		togglesticky,	{0} },
 	/* { MODKEY|ShiftMask,		XK_s,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_space,	spawn,          SHCMD("dmenu_run") },
+	{ MODKEY,			XK_d,		spawn,		SHCMD("dmenumount") },
 	{ MODKEY|ShiftMask,		XK_d,		spawn,		SHCMD("passmenu") },
 	{ MODKEY,			XK_f,		togglefullscr,	{0} },
 	{ MODKEY|ShiftMask,		XK_f,		setlayout,	{.v = &layouts[8]} },
 	/* { MODKEY|ShiftMask,		XK_g,		shifttag,	{ .i = -1 } }, */
 	{ MODKEY,			XK_h,		setmfact,	{.f = -0.05} },
-        { MODKEY,			XK_bracketleft,		view_adjacent,	{ .i = -1 } },
-	{ MODKEY,			XK_bracketright,	view_adjacent,	{ .i = +1 } },
-        { MODKEY|ShiftMask,		XK_h,			view_adjacent,	{ .i = -1 } },
-	{ MODKEY|ShiftMask,		XK_l,			view_adjacent,	{ .i = +1 } },
+        /* { MODKEY,			XK_bracketleft,		view_adjacent,	{ .i = -1 } }, */
+	/* { MODKEY,			XK_bracketright,	view_adjacent,	{ .i = +1 } }, */
+        { MODKEY,			XK_u,			view_adjacent,	{ .i = -1 } },
+	{ MODKEY,	                XK_i,			view_adjacent,	{ .i = +1 } },
+        /* { MODKEY|ShiftMask,		XK_h,			view_adjacent,	{ .i = -1 } }, */
+	/* { MODKEY|ShiftMask,		XK_l,			view_adjacent,	{ .i = +1 } }, */
 
 	/* J and K are automatically bound above in STACKEYS */
 	{ MODKEY,			XK_l,		setmfact,      	{.f = +0.05} },
@@ -277,11 +280,10 @@ static Key keys[] = {
 	{ MODKEY,			XK_F6,		spawn,		SHCMD("torwrap") },
 	{ MODKEY,			XK_F7,		spawn,		SHCMD("td-toggle") },
 	{ MODKEY,			XK_F8,		spawn,		SHCMD("mw -Y") },
-	{ MODKEY,			XK_d,		spawn,		SHCMD("dmenumount") },
+	{ MODKEY,			XK_F9,		spawn,		SHCMD("dmenumount") },
 	{ MODKEY,			XK_F10,		spawn,		SHCMD("dmenuumount") },
 	{ MODKEY,			XK_F11,		spawn,		SHCMD("mpv --no-cache --no-osc --no-input-default-bindings --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
 	{ MODKEY,			XK_F12,		spawn,		SHCMD("remaps & notify-send \\\"⌨️ Keyboard remapping...\\\" \\\"Re-running keyboard defaults for any newly plugged-in keyboards.\\\"") },
-	{ MODKEY,			XK_F9,	        view,		{0} },
 	{ MODKEY|ShiftMask,		XK_space,	togglefloating,	{0} },
 
 	{ 0,				XK_Print,	spawn,		SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
