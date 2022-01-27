@@ -1,13 +1,4 @@
-/* TODO: change MOD+' from calc to `goto right tag` */
-
 /* See LICENSE file for copyright and license details. */
-/* test */
-/* Constants */
-/* test */
-
-/* TODO: mod+; and mod+' should be switch tag left and right */
-/* DONE: don't allow tag left and right to cycle between 1 and last */
-/* TODO: mod+[/] to no cycle at end/beginning of tags list */
 
 #define TERMINAL "st"
 #define TERMCLASS "St"
@@ -178,6 +169,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_semicolon,	spawn,		SHCMD("xsel | festival --tts") },
 
 	/* { MODKEY|ShiftMask,		XK_Tab,		spawn,		SHCMD("") }, */
+	{ MODKEY,			XK_Tab,		view,		{0} },
 	/* { MODKEY,			XK_q,		killclient,	{0} }, */
 	{ MODKEY,			XK_p,		killclient,	{0} },
 	/* { MODKEY|ShiftMask,		XK_q,		spawn,		SHCMD("sysact") }, */
