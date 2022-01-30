@@ -169,7 +169,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_semicolon,	spawn,		SHCMD("xsel | festival --tts") },
 
 	/* { MODKEY|ShiftMask,		XK_Tab,		spawn,		SHCMD("") }, */
-	{ MODKEY,			XK_Tab,		view,		{0} },
+	/* { MODKEY,			XK_Tab,		view,		{0} }, */
 	/* { MODKEY,			XK_q,		killclient,	{0} }, */
 	{ MODKEY,			XK_p,		killclient,	{0} },
 	/* { MODKEY|ShiftMask,		XK_q,		spawn,		SHCMD("sysact") }, */
@@ -202,7 +202,7 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_bracketleft,		spawn,		SHCMD("mpc seek -60") }, */
 	/* { MODKEY,			XK_bracketright,	spawn,		SHCMD("mpc seek +10") }, */
 	/* { MODKEY|ShiftMask,		XK_bracketright,	spawn,		SHCMD("mpc seek +60") }, */
-	{ MODKEY,			XK_backslash,		view,		{0} },
+	{ MODKEY,			XK_y,   		view,		{0} },
 	{ MODKEY|ShiftMask,		XK_n,			view,		{0} },
 	/* { MODKEY|ShiftMask,		XK_backslash,		spawn,		SHCMD("") }, */
 
