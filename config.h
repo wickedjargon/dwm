@@ -158,6 +158,8 @@ static Key keys[] = {
 	TAGKEYS(			XK_2,		1)
 	TAGKEYS(			XK_3,		2)
 	TAGKEYS(			XK_4,		3)
+	/* TAGKEYS(			XK_5,		4) */
+	/* TAGKEYS(			XK_6,		5) */
 	{ MODKEY,			XK_0,		view,		{.ui = ~0 } },
 	{ MODKEY|ShiftMask,		XK_0,		tag,		{.ui = ~0 } },
 	{ MODKEY,			XK_minus,	spawn,		SHCMD("pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)") },
@@ -202,8 +204,8 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_bracketleft,		spawn,		SHCMD("mpc seek -60") }, */
 	/* { MODKEY,			XK_bracketright,	spawn,		SHCMD("mpc seek +10") }, */
 	/* { MODKEY|ShiftMask,		XK_bracketright,	spawn,		SHCMD("mpc seek +60") }, */
-	{ MODKEY,			XK_y,   		view,		{0} },
-	{ MODKEY|ShiftMask,		XK_n,			view,		{0} },
+	{ MODKEY,			XK_backslash,   		view,		{0} },
+	/* { MODKEY|ShiftMask,		XK_n,			view,		{0} }, */
 	/* { MODKEY|ShiftMask,		XK_backslash,		spawn,		SHCMD("") }, */
 
 	// { MODKEY,			XK_a,		togglegaps,	{0} },
@@ -212,21 +214,21 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_s,		togglesticky,	{0} },
 	/* { MODKEY|ShiftMask,		XK_s,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_space,	spawn,          SHCMD("dmenu_run") },
-	{ MODKEY,			XK_d,		spawn,		SHCMD("dmenumount") },
-	{ MODKEY|ShiftMask,		XK_d,		spawn,		SHCMD("passmenu") },
+	/* { MODKEY,			XK_d,		spawn,		SHCMD("dmenumount") }, */
+	/* { MODKEY|ShiftMask,		XK_d,		spawn,		SHCMD("passmenu") }, */
 	{ MODKEY,			XK_f,		togglefullscr,	{0} },
 	{ MODKEY|ShiftMask,		XK_f,		setlayout,	{.v = &layouts[8]} },
 	/* { MODKEY|ShiftMask,		XK_g,		shifttag,	{ .i = -1 } }, */
-	{ MODKEY,			XK_h,		setmfact,	{.f = -0.05} },
+	{ MODKEY,			XK_d,		setmfact,	{.f = -0.05} },
         /* { MODKEY,			XK_bracketleft,		view_adjacent,	{ .i = -1 } }, */
 	/* { MODKEY,			XK_bracketright,	view_adjacent,	{ .i = +1 } }, */
-        { MODKEY,			XK_u,			view_adjacent,	{ .i = -1 } },
-	{ MODKEY,	                XK_i,			view_adjacent,	{ .i = +1 } },
+        { MODKEY,			XK_h,			view_adjacent,	{ .i = -1 } },
+	{ MODKEY,	                XK_l,			view_adjacent,	{ .i = +1 } },
         /* { MODKEY|ShiftMask,		XK_h,			view_adjacent,	{ .i = -1 } }, */
 	/* { MODKEY|ShiftMask,		XK_l,			view_adjacent,	{ .i = +1 } }, */
 
 	/* J and K are automatically bound above in STACKEYS */
-	{ MODKEY,			XK_l,		setmfact,      	{.f = +0.05} },
+	{ MODKEY,			XK_u,		setmfact,      	{.f = +0.05} },
 	/* { MODKEY|ShiftMask,		XK_semicolon,	shifttag,	{ .i = 1 } }, */
 	{ MODKEY,			XK_apostrophe,	togglescratch,	{.ui = 1} },
 	/* { MODKEY|ShiftMask,		XK_apostrophe,	spawn,		SHCMD("") }, */
