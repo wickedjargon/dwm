@@ -146,20 +146,11 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	STACKKEYS(MODKEY,                          focus)
 	STACKKEYS(MODKEY|ShiftMask,                push)
-	/* { MODKEY|ShiftMask,		XK_Escape,	spawn,	SHCMD("") }, */
 	{ MODKEY|ShiftMask,		XK_grave,	spawn,	SHCMD("dmenuunicode") },
-	/* TAGKEYS(			XK_1,		spawn,	SHCMD("") }, */ 
-	/* TAGKEYS(			XK_2,		spawn,	SHCMD("") }, */ 
-	/* TAGKEYS(			XK_3,		spawn,	SHCMD("") }, */ 
-	/* TAGKEYS(			XK_4,		spawn,	SHCMD("") }, */ 
-	/* TAGKEYS(			XK_5,		spawn,	SHCMD("") }, */ 
-	/* TAGKEYS(			XK_6,		spawn,	SHCMD("") }, */ 
 	TAGKEYS(			XK_1,		0)
 	TAGKEYS(			XK_2,		1)
 	TAGKEYS(			XK_3,		2)
 	TAGKEYS(			XK_4,		3)
-	/* TAGKEYS(			XK_5,		4) */
-	/* TAGKEYS(			XK_6,		5) */
 	{ MODKEY,			XK_0,		view,		{.ui = ~0 } },
 	{ MODKEY|ShiftMask,		XK_0,		tag,		{.ui = ~0 } },
 	{ MODKEY,			XK_minus,	spawn,		SHCMD("pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)") },
@@ -169,31 +160,29 @@ static Key keys[] = {
 	{ MODKEY,			XK_BackSpace,	spawn,		SHCMD("sysact") },
 	{ MODKEY|ShiftMask,		XK_BackSpace,	spawn,		SHCMD("sysact") },
 	{ MODKEY|ShiftMask,		XK_semicolon,	spawn,		SHCMD("xsel | festival --tts") },
+	{ MODKEY,			XK_semicolon,	view,		{0} },	
 
-	/* { MODKEY|ShiftMask,		XK_Tab,		spawn,		SHCMD("") }, */
-	/* { MODKEY,			XK_Tab,		view,		{0} }, */
-	/* { MODKEY,			XK_q,		killclient,	{0} }, */
+
+
 	{ MODKEY,			XK_p,		killclient,	{0} },
-	/* { MODKEY|ShiftMask,		XK_q,		spawn,		SHCMD("sysact") }, */
 	{ MODKEY,		        XK_m,		spawn,		SHCMD("emacsclient -c") },
 	{ MODKEY,                       XK_n,		switchcol,	{0} },
 	{ MODKEY,			XK_o,		spawn,		SHCMD("$BROWSER") },
-	/* { MODKEY,			XK_w,		spawn,		SHCMD("-e weath") }, */
-	/* { MODKEY|ShiftMask,		XK_w,		spawn,		SHCMD(TERMINAL " -e sudo nmtui") }, */
-	{ MODKEY,			XK_e,		spawn,		SHCMD(TERMINAL " -e neomutt ; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook") },
-	{ MODKEY|ShiftMask,		XK_e,		spawn,		SHCMD(TERMINAL " -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") },
-	/* { MODKEY,			XK_r,		spawn,		SHCMD(TERMINAL " -e lf") }, */
-	/* { MODKEY|ShiftMask,		XK_r,		spawn,		SHCMD(TERMINAL " -e htop") }, */
+	{ MODKEY|ShiftMask,		XK_o,		spawn,		SHCMD(TERMINAL " -e sudo nmtui") },
+	{ MODKEY,			XK_e,		spawn,		SHCMD(TERMINAL " -e neomutt") },
+	{ MODKEY|ShiftMask,		XK_e,		spawn,		SHCMD(TERMINAL " -e abook") },
         { MODKEY,		        XK_c,		spawn,		SHCMD(TERMINAL " -e calcurse") },
-        /* TODO: fix this issue: */
-        /* { MODKEY|ShiftMask,	        XK_i,		spawn,		SHCMD("-e invert_colors") }, */
+	{ MODKEY,			XK_w,		spawn,		SHCMD("weath") },
 
-	{ MODKEY,			XK_t,		setlayout,	{.v = &layouts[0]} }, /* tile */
+        /* TODO: fix this issue: */
+        /* { MODKEY|ShiftMask,	        XK_i,		spawn,		SHCMD("fff_invert_colors") }, */
+
+	{ MODKEY,			XK_t,		setlayout,	{.v = &layouts[0]} }, /* tile -- t -- tiled */
 	{ MODKEY|ShiftMask,		XK_t,		setlayout,	{.v = &layouts[1]} }, /* bstack */
-	/* { MODKEY,			XK_y,		setlayout,	{.v = &layouts[2]} }, /\* spiral *\/ */
-	/* { MODKEY|ShiftMask,		XK_y,		setlayout,	{.v = &layouts[3]} }, /\* dwindle *\/ */
-	{ MODKEY,			XK_r,		setlayout,	{.v = &layouts[4]} }, /* deck */
-	{ MODKEY, 			XK_g,		setlayout,	{.v = &layouts[5]} }, /* monocle */
+	{ MODKEY,			XK_r,		setlayout,	{.v = &layouts[4]} }, /* deck -- r -- regional*/
+	{ MODKEY, 			XK_g,		setlayout,	{.v = &layouts[5]} }, /* monocle -- g -- grand*/
+	{ MODKEY,			XK_f,		togglefullscr,	{0} },
+	{ MODKEY|ShiftMask,		XK_f,           togglefloating,	{0} },
 	/* { MODKEY,			XK_i,		setlayout,	{.v = &layouts[6]} }, /\* centeredmaster *\/ */
 	/* { MODKEY|ShiftMask,		XK_i,		setlayout,	{.v = &layouts[7]} }, /\* centeredfloatingmaster *\/ */
 	/* { MODKEY,			XK_w,		incnmaster,     {.i = +1 } }, */
@@ -204,7 +193,7 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_bracketleft,		spawn,		SHCMD("mpc seek -60") }, */
 	/* { MODKEY,			XK_bracketright,	spawn,		SHCMD("mpc seek +10") }, */
 	/* { MODKEY|ShiftMask,		XK_bracketright,	spawn,		SHCMD("mpc seek +60") }, */
-	{ MODKEY,			XK_backslash,   		view,		{0} },
+	/* { MODKEY,			XK_backslash,   		view,		{0} }, */
 	/* { MODKEY|ShiftMask,		XK_n,			view,		{0} }, */
 	/* { MODKEY|ShiftMask,		XK_backslash,		spawn,		SHCMD("") }, */
 
@@ -216,10 +205,8 @@ static Key keys[] = {
 	{ MODKEY,			XK_space,	spawn,          SHCMD("dmenu_run") },
 	/* { MODKEY,			XK_d,		spawn,		SHCMD("dmenumount") }, */
 	/* { MODKEY|ShiftMask,		XK_d,		spawn,		SHCMD("passmenu") }, */
-	{ MODKEY,			XK_f,		togglefullscr,	{0} },
-	{ MODKEY|ShiftMask,		XK_f,		setlayout,	{.v = &layouts[8]} },
+	/* { MODKEY|ShiftMask,		XK_f,		setlayout,	{.v = &layouts[8]} }, */
 	/* { MODKEY|ShiftMask,		XK_g,		shifttag,	{ .i = -1 } }, */
-	{ MODKEY,			XK_d,		setmfact,	{.f = -0.05} },
         /* { MODKEY,			XK_bracketleft,		view_adjacent,	{ .i = -1 } }, */
 	/* { MODKEY,			XK_bracketright,	view_adjacent,	{ .i = +1 } }, */
         { MODKEY,			XK_h,			view_adjacent,	{ .i = -1 } },
@@ -229,6 +216,9 @@ static Key keys[] = {
 
 	/* J and K are automatically bound above in STACKEYS */
 	{ MODKEY,			XK_u,		setmfact,      	{.f = +0.05} },
+	{ MODKEY,			XK_d,		setmfact,	{.f = -0.05} },
+	{ MODKEY|ShiftMask,		XK_l,		setmfact,      	{.f = +0.05} },
+	{ MODKEY|ShiftMask,		XK_h,		setmfact,	{.f = -0.05} },
 	/* { MODKEY|ShiftMask,		XK_semicolon,	shifttag,	{ .i = 1 } }, */
 	{ MODKEY,			XK_apostrophe,	togglescratch,	{.ui = 1} },
 	/* { MODKEY|ShiftMask,		XK_apostrophe,	spawn,		SHCMD("") }, */
@@ -278,7 +268,6 @@ static Key keys[] = {
 	{ MODKEY,			XK_F10,		spawn,		SHCMD("dmenuumount") },
 	{ MODKEY,			XK_F11,		spawn,		SHCMD("mpv --no-cache --no-osc --no-input-default-bindings --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
 	{ MODKEY,			XK_F12,		spawn,		SHCMD("remaps & notify-send \\\"⌨️ Keyboard remapping...\\\" \\\"Re-running keyboard defaults for any newly plugged-in keyboards.\\\"") },
-	{ MODKEY|ShiftMask,		XK_space,	togglefloating,	{0} },
 
 	{ 0,				XK_Print,	spawn,		SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
 	{ ShiftMask,			XK_Print,	spawn,		SHCMD("maimpick") },
