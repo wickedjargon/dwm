@@ -43,7 +43,7 @@ static Sp scratchpads[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4"};
+static const char *tags[] = { "1", "2", "3", "4", "5", "6"};
 
 static const unsigned int ulinepad	= 5;	/* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke	= 2;	/* thickness / height of the underline */
@@ -151,6 +151,8 @@ static Key keys[] = {
 	TAGKEYS(			XK_2,		1)
 	TAGKEYS(			XK_3,		2)
 	TAGKEYS(			XK_4,		3)
+	TAGKEYS(			XK_5,		4)
+	TAGKEYS(			XK_6,		5)
 	{ MODKEY,			XK_0,		view,		{.ui = ~0 } },
 	{ MODKEY|ShiftMask,		XK_0,		tag,		{.ui = ~0 } },
 	{ MODKEY,			XK_minus,	spawn,		SHCMD("pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)") },
@@ -160,7 +162,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_BackSpace,	spawn,		SHCMD("sysact") },
 	{ MODKEY|ShiftMask,		XK_BackSpace,	spawn,		SHCMD("sysact") },
 	{ MODKEY|ShiftMask,		XK_semicolon,	spawn,		SHCMD("xsel | festival --tts") },
-	{ MODKEY,			XK_semicolon,	view,		{0} },	
+	/* { MODKEY,			XK_semicolon,	view,		{0} },	 */
 
 
 
@@ -172,7 +174,8 @@ static Key keys[] = {
 	{ MODKEY,			XK_e,		spawn,		SHCMD(TERMINAL " -e neomutt") },
 	{ MODKEY|ShiftMask,		XK_e,		spawn,		SHCMD(TERMINAL " -e abook") },
         { MODKEY,		        XK_c,		spawn,		SHCMD(TERMINAL " -e calcurse") },
-	{ MODKEY,			XK_w,		spawn,		SHCMD("weath") },
+        { MODKEY|ShiftMask,		XK_c,		spawn,		SHCMD(TERMINAL "xmouseless -c") },
+	/* { MODKEY,			XK_w,		spawn,		SHCMD("weath") }, */
 
         /* TODO: fix this issue: */
         /* { MODKEY|ShiftMask,	        XK_i,		spawn,		SHCMD("fff_invert_colors") }, */
@@ -215,11 +218,12 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_l,			view_adjacent,	{ .i = +1 } }, */
 
 	/* J and K are automatically bound above in STACKEYS */
-	{ MODKEY,			XK_u,		setmfact,      	{.f = +0.05} },
-	{ MODKEY,			XK_d,		setmfact,	{.f = -0.05} },
+	/* { MODKEY,			XK_u,		setmfact,      	{.f = +0.05} }, */
+	/* { MODKEY,			XK_d,		setmfact,	{.f = -0.05} }, */
 	{ MODKEY|ShiftMask,		XK_l,		setmfact,      	{.f = +0.05} },
 	{ MODKEY|ShiftMask,		XK_h,		setmfact,	{.f = -0.05} },
 	/* { MODKEY|ShiftMask,		XK_semicolon,	shifttag,	{ .i = 1 } }, */
+	{ MODKEY,			XK_apostrophe,	togglescratch,	{.ui = 1} },
 	{ MODKEY,			XK_apostrophe,	togglescratch,	{.ui = 1} },
 	/* { MODKEY|ShiftMask,		XK_apostrophe,	spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_Return,	spawn,		{.v = termcmd } },

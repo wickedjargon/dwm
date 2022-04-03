@@ -1,139 +1,4 @@
 
-vanitygaps.c,348
-static int enablegaps 21,633
-setgaps(24,673
-defaultgaps(46,1044
-unsigned char ff_gaps_switch 51,1119
-ff_widegaps(54,1166
-ff_incrgaps_v(73,1546
-getgaps(86,1846
-getfacts(105,2368
-bstack(138,3205
-centeredmaster(185,4283
-centeredfloatingmaster(270,6718
-deck(330,8277
-fibonacci(377,9365
-dwindle(439,10464
-spiral(445,10519
-tile(455,10611
-
-drw.h,563
-	Cursor cursor;4,76
-} Cur;5,92
-typedef struct Fnt 7,100
-	Display *dpy;dpy8,121
-	unsigned int h;9,136
-	XftFont *xfont;xfont10,153
-	FcPattern *pattern;pattern11,170
-	struct Fnt *next;next12,191
-} Fnt;13,210
-enum { ColFg,15,218
-enum { ColFg, ColBg,15,218
-enum { ColFg, ColBg, ColBorder 15,218
-typedef XftColor Clr;16,275
-	unsigned int w,19,315
-	unsigned int w, h;19,315
-	Display *dpy;dpy20,335
-	int screen;21,350
-	Window root;22,363
-	Drawable drawable;23,377
-	GC gc;24,397
-	Clr *scheme;scheme25,405
-	Fnt *fonts;fonts26,419
-} Drw;27,432
-
-util.c,28
-ecalloc(10,164
-die(20,282
-
-transient.c,16
-int main(8,127
-
-shiftview.c,57
-shiftview(7,184
-shifttag(35,880
-view_adjacent(68,1611
-
-config.h,1567
-#define TERMINAL 14,491
-#define TERMCLASS 15,513
-static unsigned int borderpx 18,554
-static unsigned int snap 19,626
-static unsigned int gappih 20,685
-static unsigned int gappiv 21,765
-static unsigned int gappoh 22,844
-static unsigned int gappov 24,1043
-static unsigned int ff_wide_gappov 25,1139
-static int swallowfloating 27,1184
-static int smartgaps 28,1276
-static int showbar 29,1375
-static int topbar 30,1438
-static char *fonts[fonts31,1505
-static char normbgcolor[normbgcolor32,1618
-static char normbordercolor[normbordercolor34,1722
-static char normfgcolor[normfgcolor35,1771
-static char selfgcolor[selfgcolor36,1820
-static char selbordercolor[selbordercolor37,1869
-static char selbgcolor[selbgcolor39,1973
-static char *colors[colors40,2022
-	const char *name;name47,2272
-	const void *cmd;cmd48,2291
-} Sp;49,2309
-const char *spcmd1[spcmd150,2315
-const char *spcmd2[spcmd251,2389
-static Sp scratchpads[scratchpads52,2508
-static const char *tags[tags59,2632
-static const char emacsclient[emacsclient62,2699
-static const char emacsname[emacsname63,2748
-static const Rule rules[rules66,2792
-static float mfact 80,3520
-static int nmaster 81,3597
-static int resizehints 82,3667
-#define FORCE_VSPLIT 83,3749
-static const Layout layouts[layouts85,3865
-#define MODKEY 104,4563
-#define TAGKEYS(105,4587
-#define STACKKEYS(110,4936
-#define SHCMD(120,5412
-static const char *termcmd[termcmd123,5502
-ResourcePref resources[resources128,5607
-static Key keys[keys153,6418
-static Button buttons[buttons344,17813
-
-util.h,60
-#define MAX(3,59
-#define MIN(4,115
-#define BETWEEN(5,171
-
-drw.c,716
-#define UTF_INVALID 11,201
-#define UTF_SIZ 12,228
-static const unsigned char utfbyte[utfbyte14,251
-static const unsigned char utfmask[utfmask15,333
-static const long utfmin[utfmin16,415
-static const long utfmax[utfmax17,498
-utf8decodebyte(20,594
-utf8validate(29,804
-utf8decode(39,996
-drw_create(64,1444
-drw_resize(81,1860
-drw_free(94,2127
-xfont_create(105,2350
-xfont_free(145,3580
-drw_fontset_create(156,3741
-drw_fontset_free(174,4054
-drw_clr_create(183,4160
-drw_scm_create(199,4651
-drw_setfontset(214,4983
-drw_setscheme(221,5058
-drw_rect(228,5133
-drw_text(240,5521
-drw_map(371,9013
-drw_fontset_getwidth(381,9223
-drw_font_getexts(389,9376
-drw_cur_create(404,9658
-drw_cur_free(417,9844
-
 dwm.c,8536
 #define BUTTONMASK 51,1613
 #define CLEANMASK(52,1681
@@ -339,93 +204,232 @@ detach(893,22894
 detachstack(902,23019
 dirtomon(916,23267
 drawbar(931,23507
-drawbars(981,24978
-enternotify(990,25063
-expose(1009,25444
-focus(1019,25584
-focusin(1045,26235
-focusmon(1054,26379
-focusstack(1068,26558
-getatomprop(1083,26857
-getdwmblockspid(1100,27169
-getrootptr(1113,27392
-getstate(1123,27545
-gettextprop(1141,27882
-grabbuttons(1166,28432
-grabkeys(1187,29079
-isuniquegeom(1213,29701
-keypress(1224,29991
-killclient(1240,30316
-manage(1256,30635
-mappingnotify(1324,32710
-maprequest(1334,32862
-monocle(1348,33121
-motionnotify(1363,33493
-movemouse(1380,33775
-nexttiled(1440,35409
-pop(1447,35512
-pushstack(1456,35590
-propertynotify(1479,35982
-quit(1516,36827
-recttomon(1523,36902
-resize(1537,37112
-resizeclient(1544,37263
-resizemouse(1559,37629
-restack(1616,39311
-run(1641,39843
-runAutostart(1652,40029
-scan(1657,40104
-sendmon(1684,40816
-setclientstate(1700,41072
-sendevent(1709,41266
-setfocus(1734,41789
-setfullscreen(1746,42072
-stackpos(1774,42861
-setlayout(1804,43593
-setmfact(1819,43972
-setup(1833,44212
-seturgent(1907,47154
-showhide(1920,47406
-sigchld(1942,47971
-sighup(1950,48125
-sigterm(1957,48184
-sigdwmblocks(1965,48264
-spawn(1983,48590
-switchcol(1999,48854
-tag(2029,49425
-tagmon(2039,49574
-togglebar(2047,49692
-togglefloating(2056,49887
-togglefullscr(2070,50257
-togglesticky(2077,50375
-togglescratch(2086,50510
-toggletag(2112,51088
-toggleview(2127,51313
-unfocus(2139,51534
-unmanage(2152,51824
-unmapnotify(2194,52583
-updatebars(2208,52787
-updatebarpos(2230,53398
-updateclientlist(2243,53609
-updategeom(2257,53913
-updatenumlockmask(2335,55776
-updatesizehints(2351,56138
-updatestatus(2394,57290
-updatetitle(2404,57475
-updatewindowtype(2413,57726
-updatewmhints(2425,58002
-view(2444,58387
-winpid(2456,58648
-getparentprocess(2489,59408
-isdescprocess(2516,59872
-termforwin(2525,59988
-swallowingclient(2546,60378
-wintoclient(2562,60605
-wintomon(2575,60787
-xerror(2595,61253
-xerrordummy(2613,62079
-xerrorstart(2621,62228
-zoom(2628,62349
-resource_load(2642,62601
-load_xresources(2677,63255
-main(2696,63616
+drawbars(983,25243
+enternotify(992,25328
+expose(1011,25709
+focus(1021,25849
+focusin(1047,26500
+focusmon(1056,26644
+focusstack(1070,26823
+getatomprop(1085,27122
+getdwmblockspid(1102,27434
+getrootptr(1115,27657
+getstate(1125,27810
+gettextprop(1143,28147
+grabbuttons(1168,28697
+grabkeys(1189,29344
+isuniquegeom(1215,29966
+keypress(1226,30256
+killclient(1242,30581
+manage(1258,30900
+mappingnotify(1326,32975
+maprequest(1336,33127
+monocle(1350,33386
+motionnotify(1365,33758
+movemouse(1382,34040
+nexttiled(1442,35674
+pop(1449,35777
+pushstack(1458,35855
+propertynotify(1481,36247
+quit(1518,37092
+recttomon(1525,37167
+resize(1539,37377
+resizeclient(1546,37528
+resizemouse(1561,37894
+restack(1618,39576
+run(1643,40108
+runAutostart(1654,40294
+scan(1659,40369
+sendmon(1686,41081
+setclientstate(1702,41337
+sendevent(1711,41531
+setfocus(1736,42054
+setfullscreen(1748,42337
+stackpos(1776,43126
+setlayout(1806,43858
+setmfact(1821,44237
+setup(1835,44477
+seturgent(1909,47419
+showhide(1922,47671
+sigchld(1944,48236
+sighup(1952,48390
+sigterm(1959,48449
+sigdwmblocks(1967,48529
+spawn(1985,48855
+switchcol(2001,49119
+tag(2031,49690
+tagmon(2041,49839
+togglebar(2049,49957
+togglefloating(2058,50152
+togglefullscr(2072,50522
+togglesticky(2079,50640
+togglescratch(2088,50775
+toggletag(2114,51353
+toggleview(2129,51578
+unfocus(2141,51799
+unmanage(2154,52089
+unmapnotify(2196,52848
+updatebars(2210,53052
+updatebarpos(2232,53663
+updateclientlist(2245,53874
+updategeom(2259,54178
+updatenumlockmask(2337,56041
+updatesizehints(2353,56403
+updatestatus(2396,57555
+updatetitle(2406,57740
+updatewindowtype(2415,57991
+updatewmhints(2427,58267
+view(2446,58652
+winpid(2458,58913
+getparentprocess(2491,59673
+isdescprocess(2518,60137
+termforwin(2527,60253
+swallowingclient(2548,60643
+wintoclient(2564,60870
+wintomon(2577,61052
+xerror(2597,61518
+xerrordummy(2615,62344
+xerrorstart(2623,62493
+zoom(2630,62614
+resource_load(2644,62866
+load_xresources(2679,63520
+main(2698,63881
+
+shiftview.c,57
+shiftview(7,184
+shifttag(35,880
+view_adjacent(67,1549
+
+util.c,28
+ecalloc(10,164
+die(20,282
+
+config.h,1727
+#define TERMINAL 3,59
+#define TERMCLASS 4,81
+static unsigned int borderpx 7,122
+static unsigned int snap 8,194
+static unsigned int gappih 9,253
+static unsigned int gappiv 10,333
+static unsigned int gappoh 11,412
+static unsigned int gappov 13,611
+static unsigned int ff_wide_gappov 14,707
+static int swallowfloating 16,752
+static int smartgaps 17,844
+static int showbar 18,943
+static int topbar 19,1006
+static char *fonts[fonts20,1073
+static char normbgcolor[normbgcolor21,1186
+static char normbordercolor[normbordercolor22,1235
+static char normfgcolor[normfgcolor23,1284
+static char selfgcolor[selfgcolor24,1333
+static char selbordercolor[selbordercolor25,1382
+static char selbgcolor[selbgcolor26,1431
+static char *colors[colors27,1480
+	const char *name;name34,1730
+	const void *cmd;cmd35,1749
+} Sp;36,1767
+const char *spcmd1[spcmd137,1773
+const char *spcmd2[spcmd238,1847
+static Sp scratchpads[scratchpads39,1966
+static const char *tags[tags46,2090
+static const unsigned int ulinepad	48,2142
+static const unsigned int ulinestroke	49,2237
+static const unsigned int ulinevoffset	50,2322
+static const int ulineall 51,2431
+static const char emacsclient[emacsclient54,2551
+static const char emacsname[emacsname55,2600
+static const Rule rules[rules57,2643
+static float mfact 71,3371
+static int nmaster 72,3448
+static int resizehints 73,3518
+#define FORCE_VSPLIT 74,3600
+static const Layout layouts[layouts76,3716
+#define MODKEY 95,4414
+#define TAGKEYS(96,4438
+#define STACKKEYS(101,4787
+#define SHCMD(111,5263
+static const char *termcmd[termcmd114,5353
+ResourcePref resources[resources119,5458
+static Key keys[keys144,6269
+static Button buttons[buttons330,17312
+
+drw.c,716
+#define UTF_INVALID 11,201
+#define UTF_SIZ 12,228
+static const unsigned char utfbyte[utfbyte14,251
+static const unsigned char utfmask[utfmask15,333
+static const long utfmin[utfmin16,415
+static const long utfmax[utfmax17,498
+utf8decodebyte(20,594
+utf8validate(29,804
+utf8decode(39,996
+drw_create(64,1444
+drw_resize(81,1860
+drw_free(94,2127
+xfont_create(105,2350
+xfont_free(145,3580
+drw_fontset_create(156,3741
+drw_fontset_free(174,4054
+drw_clr_create(183,4160
+drw_scm_create(199,4651
+drw_setfontset(214,4983
+drw_setscheme(221,5058
+drw_rect(228,5133
+drw_text(240,5521
+drw_map(371,9013
+drw_fontset_getwidth(381,9223
+drw_font_getexts(389,9376
+drw_cur_create(404,9658
+drw_cur_free(417,9844
+
+util.h,60
+#define MAX(3,59
+#define MIN(4,115
+#define BETWEEN(5,171
+
+transient.c,16
+int main(8,127
+
+vanitygaps.c,348
+static int enablegaps 21,633
+setgaps(24,673
+defaultgaps(46,1044
+unsigned char ff_gaps_switch 51,1119
+ff_widegaps(54,1166
+ff_incrgaps_v(73,1546
+getgaps(86,1846
+getfacts(105,2368
+bstack(138,3205
+centeredmaster(185,4283
+centeredfloatingmaster(270,6718
+deck(330,8277
+fibonacci(377,9365
+dwindle(439,10464
+spiral(445,10519
+tile(455,10611
+
+drw.h,563
+	Cursor cursor;4,76
+} Cur;5,92
+typedef struct Fnt 7,100
+	Display *dpy;dpy8,121
+	unsigned int h;9,136
+	XftFont *xfont;xfont10,153
+	FcPattern *pattern;pattern11,170
+	struct Fnt *next;next12,191
+} Fnt;13,210
+enum { ColFg,15,218
+enum { ColFg, ColBg,15,218
+enum { ColFg, ColBg, ColBorder 15,218
+typedef XftColor Clr;16,275
+	unsigned int w,19,315
+	unsigned int w, h;19,315
+	Display *dpy;dpy20,335
+	int screen;21,350
+	Window root;22,363
+	Drawable drawable;23,377
+	GC gc;24,397
+	Clr *scheme;scheme25,405
+	Fnt *fonts;fonts26,419
+} Drw;27,432
