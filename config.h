@@ -14,7 +14,7 @@ static int swallowfloating    = 0;
 static int smartgaps          = 0;
 static int showbar            = 1;
 static int topbar             = 1;
-static char *fonts[]          = { "monospace:size=16", "JoyPixels:pixelsize=14:antialias=true:autohint=true"  };
+static char *fonts[]          = { "monospace:size=14", "JoyPixels:pixelsize=14:antialias=true:autohint=true"  };
 static char normbgcolor[]           = "#000000";
 static char normbordercolor[]       = "#222222";
 static char normfgcolor[]           = "#bbbbbb";
