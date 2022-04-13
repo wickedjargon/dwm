@@ -7,14 +7,12 @@ static unsigned int gappih    = 20;
 static unsigned int gappiv    = 10;
 static unsigned int gappoh    = 10;
 static unsigned int gappov    = 200;
-
 static unsigned int ff_wide_gappov    = 30;
-
 static int swallowfloating    = 0;
 static int smartgaps          = 0;
 static int showbar            = 1;
 static int topbar             = 1;
-static char *fonts[]          = { "monospace:size=14", "JoyPixels:pixelsize=14:antialias=true:autohint=true"  };
+static char *fonts[]          = { "monospace:size=13", "JoyPixels:pixelsize=13:antialias=true:autohint=true"  };
 static char normbgcolor[]           = "#000000";
 static char normbordercolor[]       = "#222222";
 static char normfgcolor[]           = "#bbbbbb";
@@ -56,17 +54,21 @@ static int resizehints = 0;
 #define FORCE_VSPLIT 1
 #include "vanitygaps.c"
 static const Layout layouts[] = {
-  { "[]=",	tile },
-  { "TTT",	bstack },
+  { "[M]",	monocle }, // grand
+  { "[]=",	tile }, // tiled
+  { "TTT",	bstack }, // tiled (master-top, slave-bottom)
   { "[@]",	spiral },
   { "[\\]",	dwindle },
-  { "[D]",	deck },
-  { "[M]",	monocle },
+  { "[D]",	deck }, // regional
   { "|M|",	centeredmaster },
   { ">M>",	centeredfloatingmaster },
   { "><>",	NULL },
   { NULL,		NULL },
 };
+
+
+
+
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG)						\
   { MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
@@ -122,7 +124,6 @@ static Key keys[] = {
   { MODKEY,			XK_BackSpace,	spawn,		SHCMD("sysact") },
   { MODKEY|ShiftMask,		XK_BackSpace,	spawn,		SHCMD("sysact") },
   { MODKEY|ShiftMask,		XK_semicolon,	spawn,		SHCMD("xsel | festival --tts") },
-	
   { MODKEY,			XK_p,		killclient,	{0} },
   { MODKEY,		        XK_m,		spawn,		SHCMD("emacsclient -c") },
   { MODKEY,                       XK_n,		switchcol,	{0} },
@@ -132,65 +133,26 @@ static Key keys[] = {
   { MODKEY|ShiftMask,		XK_e,		spawn,		SHCMD(TERMINAL " -e abook") },
   { MODKEY,		        XK_c,		spawn,		SHCMD(TERMINAL " -e calcurse") },
   { MODKEY|ShiftMask,		XK_c,		spawn,		SHCMD(TERMINAL "xmouseless -c") },
-	
-	
-	
-  { MODKEY,			XK_t,		setlayout,	{.v = &layouts[0]} },
-  { MODKEY|ShiftMask,		XK_t,		setlayout,	{.v = &layouts[1]} },
-  { MODKEY,			XK_r,		setlayout,	{.v = &layouts[4]} },
-  { MODKEY, 			XK_g,		setlayout,	{.v = &layouts[5]} },
+  { MODKEY,			XK_t,		setlayout,	{.v = &layouts[1]} }, 
+  { MODKEY|ShiftMask,		XK_t,		setlayout,	{.v = &layouts[2]} },
+  { MODKEY,			XK_r,		setlayout,	{.v = &layouts[5]} },
+  { MODKEY, 			XK_g,		setlayout,	{.v = &layouts[0]} },
+
   { MODKEY,			XK_f,		togglefullscr,	{0} },
   { MODKEY|ShiftMask,		XK_f,           togglefloating,	{0} },
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
   { MODKEY,			XK_a,		ff_widegaps,	{0} },
-	
   { MODKEY|ShiftMask,		XK_s,		togglesticky,	{0} },
-	
   { MODKEY,			XK_space,	spawn,          SHCMD("dmenu_run") },
-	
-	
-	
-	
-	
-	
   { MODKEY,			XK_h,			view_adjacent,	{ .i = -1 } },
   { MODKEY,	                XK_l,			view_adjacent,	{ .i = +1 } },
-	
-	
-	
-	
-	
   { MODKEY|ShiftMask,		XK_l,		setmfact,      	{.f = +0.05} },
   { MODKEY|ShiftMask,		XK_h,		setmfact,	{.f = -0.05} },
-	
   { MODKEY,			XK_apostrophe,	togglescratch,	{.ui = 1} },
-	
   { MODKEY,			XK_Return,	spawn,		{.v = termcmd } },
   { MODKEY|ShiftMask,		XK_Return,	togglescratch,	{.ui = 0} },
   { MODKEY,			XK_z,		ff_incrgaps_v,	{.i = +3 } },
   { MODKEY,			XK_x,		ff_incrgaps_v,	{.i = -3 } },
-	
-	
-	
-	
-	
-	
   { MODKEY,			XK_b,		togglebar,	{0} },
-	
-	
-	
   { MODKEY|ShiftMask,		XK_m,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
   { MODKEY,			XK_comma,	spawn,		SHCMD("mpc prev") },
   { MODKEY|ShiftMask,		XK_comma,	spawn,		SHCMD("mpc seek 0%") },
@@ -209,7 +171,6 @@ static Key keys[] = {
   { MODKEY,			XK_F2,		spawn,		SHCMD("tutorialvids") },
   { MODKEY,			XK_F3,		spawn,		SHCMD("displayselect") },
   { MODKEY,			XK_F4,		spawn,		SHCMD(TERMINAL " -e pulsemixer; kill -44 $(pidof dwmblocks)") },
-	
   { MODKEY,			XK_F6,		spawn,		SHCMD("torwrap") },
   { MODKEY,			XK_F7,		spawn,		SHCMD("td-toggle") },
   { MODKEY,			XK_F8,		spawn,		SHCMD("mw -Y") },
@@ -244,14 +205,12 @@ static Key keys[] = {
   { 0, XF86XK_TaskPane,		spawn,		SHCMD(TERMINAL " -e htop") },
   { 0, XF86XK_Mail,		spawn,		SHCMD(TERMINAL " -e neomutt ; pkill -RTMIN+12 dwmblocks") },
   { 0, XF86XK_MyComputer,		spawn,		SHCMD(TERMINAL " -e lf /") },
-	
   { 0, XF86XK_Launch1,		spawn,		SHCMD("xset dpms force off") },
   { 0, XF86XK_TouchpadToggle,	spawn,		SHCMD("(synclient | grep 'TouchpadOff.*1' && synclient TouchpadOff=0) || synclient TouchpadOff=1") },
   { 0, XF86XK_TouchpadOff,	spawn,		SHCMD("synclient TouchpadOff=1") },
   { 0, XF86XK_TouchpadOn,		spawn,		SHCMD("synclient TouchpadOff=0") },
   { 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("xbacklight -inc 15") },
   { 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("xbacklight -dec 15") },
-	
 };
 static Button buttons[] = {
 #ifndef __OpenBSD__
@@ -267,8 +226,6 @@ static Button buttons[] = {
   { ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
   { ClkClientWin,         MODKEY,         Button2,        defaultgaps,	{0} },
   { ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
-	
-	
   { ClkTagBar,            0,              Button1,        view,           {0} },
   { ClkTagBar,            0,              Button3,        toggleview,     {0} },
   { ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
