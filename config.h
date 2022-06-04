@@ -128,6 +128,7 @@ static Key keys[] = {
   { MODKEY,		        XK_m,		spawn,		SHCMD("emacsclient -c") },
   { MODKEY,                       XK_n,		switchcol,	{0} },
   { MODKEY,			XK_o,		spawn,		SHCMD("$BROWSER") },
+  { MODKEY,			XK_o,		spawn,		SHCMD("chromium") },
   { MODKEY|ShiftMask,		XK_o,		spawn,		SHCMD(TERMINAL " -e sudo nmtui") },
   { MODKEY,			XK_e,		spawn,		SHCMD(TERMINAL " -e neomutt") },
   { MODKEY|ShiftMask,		XK_e,		spawn,		SHCMD(TERMINAL " -e abook") },
