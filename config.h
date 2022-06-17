@@ -2,12 +2,12 @@
 #define TERMCLASS "St"
 
 static unsigned int borderpx  = 3;
-static unsigned int snap      = 32;
-static unsigned int gappih    = 20;
-static unsigned int gappiv    = 10;
-static unsigned int gappoh    = 10;
-static unsigned int gappov    = 200;
-static unsigned int ff_wide_gappov    = 30;
+static unsigned int snap      = 4;
+static unsigned int gappih    = 4;
+static unsigned int gappiv    = 4;
+static unsigned int gappoh    = 4;
+static unsigned int gappov    = 4;
+static unsigned int ff_wide_gappov    = 300;
 static int swallowfloating    = 0;
 static int smartgaps          = 0;
 static int showbar            = 1;
