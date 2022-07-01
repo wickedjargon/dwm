@@ -12,7 +12,7 @@ static int swallowfloating    = 0;
 static int smartgaps          = 0;
 static int showbar            = 1;
 static int topbar             = 1;
-static char *fonts[]          = { "monospace:size=13", "JoyPixels:pixelsize=13:antialias=true:autohint=true"  };
+static char *fonts[]          = { "monospace:size=12", "JoyPixels:pixelsize=12:antialias=true:autohint=true"  };
 static char normbgcolor[]           = "#000000";
 static char normbordercolor[]       = "#222222";
 static char normfgcolor[]           = "#bbbbbb";
@@ -28,12 +28,14 @@ typedef struct {
   const char *name;
   const void *cmd;
 } Sp;
+
 const char *spcmd1[] = {TERMINAL, "-n", "spterm", "-g", "120x34", NULL };
 const char *spcmd2[] = {TERMINAL, "-n", "spcalc", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL };
 static Sp scratchpads[] = {
   {"spterm",      spcmd1},
   {"spcalc",      spcmd2},
 };
+
 static const char *tags[] = { "1", "2", "3", "4", "5", "6"};
 static const unsigned int ulinepad	= 5;
 static const unsigned int ulinestroke	= 2;
@@ -48,6 +50,7 @@ static const Rule rules[] = {
   { NULL,      "spterm",    NULL,       	    SPTAG(0),     1,           1,         0,        -1 },
   { NULL,      "spcalc",    NULL,       	    SPTAG(1),     1,           1,         0,        -1 },
 };
+
 static float mfact     = 0.55;
 static int nmaster     = 1;
 static int resizehints = 0;
@@ -65,9 +68,6 @@ static const Layout layouts[] = {
   { "><>",	NULL },
   { NULL,		NULL },
 };
-
-
-
 
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG)						\
@@ -103,6 +103,7 @@ ResourcePref resources[] = {
   { "swallowfloating",	INTEGER, &swallowfloating },
   { "smartgaps",		INTEGER, &smartgaps },
 };
+
 #include <X11/XF86keysym.h>
 #include "shiftview.c"
 static Key keys[] = {
@@ -213,6 +214,7 @@ static Key keys[] = {
   { 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("xbacklight -inc 15") },
   { 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("xbacklight -dec 15") },
 };
+
 static Button buttons[] = {
 #ifndef __OpenBSD__
   { ClkWinTitle,          0,              Button2,        zoom,           {0} },
