@@ -304,55 +304,55 @@ util.c,28
 ecalloc(10,164
 die(20,282
 
-config.h,1727
-#define TERMINAL 3,59
-#define TERMCLASS 4,81
-static unsigned int borderpx 7,122
-static unsigned int snap 8,194
-static unsigned int gappih 9,253
-static unsigned int gappiv 10,333
-static unsigned int gappoh 11,412
-static unsigned int gappov 13,611
-static unsigned int ff_wide_gappov 14,707
-static int swallowfloating 16,752
-static int smartgaps 17,844
-static int showbar 18,943
-static int topbar 19,1006
-static char *fonts[fonts20,1073
-static char normbgcolor[normbgcolor21,1186
-static char normbordercolor[normbordercolor22,1235
-static char normfgcolor[normfgcolor23,1284
-static char selfgcolor[selfgcolor24,1333
-static char selbordercolor[selbordercolor25,1382
-static char selbgcolor[selbgcolor26,1431
-static char *colors[colors27,1480
-	const char *name;name34,1730
-	const void *cmd;cmd35,1749
-} Sp;36,1767
-const char *spcmd1[spcmd137,1773
-const char *spcmd2[spcmd238,1847
-static Sp scratchpads[scratchpads39,1966
-static const char *tags[tags46,2090
-static const unsigned int ulinepad	48,2142
-static const unsigned int ulinestroke	49,2237
-static const unsigned int ulinevoffset	50,2322
-static const int ulineall 51,2431
-static const char emacsclient[emacsclient54,2551
-static const char emacsname[emacsname55,2600
-static const Rule rules[rules57,2643
-static float mfact 71,3371
-static int nmaster 72,3448
-static int resizehints 73,3518
-#define FORCE_VSPLIT 74,3600
-static const Layout layouts[layouts76,3716
-#define MODKEY 95,4414
-#define TAGKEYS(96,4438
-#define STACKKEYS(101,4787
-#define SHCMD(111,5263
-static const char *termcmd[termcmd114,5353
-ResourcePref resources[resources119,5458
-static Key keys[keys144,6269
-static Button buttons[buttons330,17312
+config.h,1713
+#define TERMINAL 1,0
+#define TERMCLASS 2,22
+static unsigned int borderpx 4,46
+static unsigned int snap 5,81
+static unsigned int gappih 6,116
+static unsigned int gappiv 7,151
+static unsigned int gappoh 8,186
+static unsigned int gappov 9,221
+static unsigned int ff_wide_gappov 10,256
+static int swallowfloating 11,301
+static int smartgaps 12,336
+static int showbar 13,371
+static int topbar 14,406
+static char *fonts[fonts15,441
+static char normbgcolor[normbgcolor16,554
+static char normbordercolor[normbordercolor17,603
+static char normfgcolor[normfgcolor18,652
+static char selfgcolor[selfgcolor19,701
+static char selbordercolor[selbordercolor20,750
+static char selbgcolor[selbgcolor21,799
+static char *colors[colors23,849
+  const char *name;name29,1027
+  const void *cmd;cmd30,1047
+} Sp;31,1066
+const char *spcmd1[spcmd133,1073
+const char *spcmd2[spcmd234,1147
+static Sp scratchpads[scratchpads36,1267
+static const char *tags[tags41,1353
+static const unsigned int ulinepad	42,1414
+static const unsigned int ulinestroke	43,1454
+static const unsigned int ulinevoffset	44,1497
+static const int ulineall 45,1541
+static const char emacsclient[emacsclient46,1574
+static const char emacsname[emacsname47,1623
+static const Rule rules[rules49,1666
+static float mfact 57,2206
+static int nmaster 58,2237
+static int resizehints 59,2265
+#define FORCE_VSPLIT 61,2294
+static const Layout layouts[layouts64,2342
+#define MODKEY 77,2675
+#define TAGKEYS(78,2699
+#define STACKKEYS(83,3057
+#define SHCMD(87,3199
+	  static const char *termcmd[termcmd89,3277
+ResourcePref resources[resources90,3332
+static Key keys[keys115,4295
+static Button buttons[buttons226,11600
 
 drw.c,716
 #define UTF_INVALID 11,201

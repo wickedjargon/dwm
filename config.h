@@ -1,19 +1,18 @@
 #define TERMINAL "st"
 #define TERMCLASS "St"
 
-
 static unsigned int borderpx  = 3;
-static unsigned int snap      = 4;
-static unsigned int gappih    = 4;
-static unsigned int gappiv    = 4;
-static unsigned int gappoh    = 4;
-static unsigned int gappov    = 4;
+static unsigned int snap      = 2;
+static unsigned int gappih    = 2;
+static unsigned int gappiv    = 2;
+static unsigned int gappoh    = 2;
+static unsigned int gappov    = 2;
 static unsigned int ff_wide_gappov    = 100;
 static int swallowfloating    = 0;
 static int smartgaps          = 0;
 static int showbar            = 0;
 static int topbar             = 1;
-static char *fonts[]          = { "monospace:size=12", "JoyPixels:pixelsize=12:antialias=true:autohint=true"  };
+static char *fonts[]          = { "monospace:size=10", "JoyPixels:pixelsize=10:antialias=true:autohint=true"  };
 static char normbgcolor[]           = "#000000";
 static char normbordercolor[]       = "#222222";
 static char normfgcolor[]           = "#bbbbbb";
@@ -48,11 +47,11 @@ static const char emacsclient[] = "emacsclient";
 static const char emacsname[] = "emacs@";
 
 static const Rule rules[] = {
-  { "Gimp",     NULL,       NULL,       	    1 << 8,       0,           0,         0,        -1 },
-  { TERMCLASS,   NULL,       NULL,       	    0,            0,           1,         0,        -1 },
-  { NULL,       NULL,       "Event Tester",   0,            0,           0,         1,        -1 },
-  { NULL,      "spterm",    NULL,       	    SPTAG(0),     1,           1,         0,        -1 },
-  { NULL,      "spcalc",    NULL,       	    SPTAG(1),     1,           1,         0,        -1 },
+  { "Gimp",      NULL,        NULL,       	    1 << 8,       0,           0,         0,        -1 },
+  { TERMCLASS,   NULL,        NULL,       	    0,            0,           1,         0,        -1 },
+  { NULL,        NULL,        "Event Tester",   0,            0,           0,         1,        -1 },
+  { NULL,        "spterm",    NULL,       	    SPTAG(0),     1,           1,         0,        -1 },
+  { NULL,        "spcalc",    NULL,       	    SPTAG(1),     1,           1,         0,        -1 },
 };
 
 static float mfact     = 0.55;
@@ -78,12 +77,12 @@ static const Layout layouts[] = {
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG)						\
   { MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+  { MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+  { MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
+  { MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 #define STACKKEYS(MOD,ACTION)					\
   { MOD,	XK_j,	ACTION##stack,	{.i = INC(+1) } },	\
-	{ MOD,	XK_k,	ACTION##stack,	{.i = INC(-1) } },	\
+  { MOD,	XK_k,	ACTION##stack,	{.i = INC(-1) } },	\
 	  
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 	  
@@ -112,6 +111,7 @@ ResourcePref resources[] = {
 
 #include <X11/XF86keysym.h>
 #include "shiftview.c"
+
 static Key keys[] = {
   STACKKEYS(MODKEY,                          focus)
   STACKKEYS(MODKEY|ShiftMask,                push)
@@ -160,6 +160,8 @@ static Key keys[] = {
   { MODKEY|ShiftMask, 	XK_Return,	    togglescratch,	{.ui = 0} },
   { MODKEY,           	XK_z,		    ff_incrgaps_v,	{.i = +3 } },
   { MODKEY,           	XK_x,		    ff_incrgaps_v,	{.i = -3 } },
+  { MODKEY|ShiftMask,   XK_z,		    ff_incrgaps_h,	{.i = +3 } },
+  { MODKEY|ShiftMask,   XK_x,		    ff_incrgaps_h,	{.i = -3 } },
   { MODKEY,           	XK_b,		    togglebar,	{0} },
   { MODKEY|ShiftMask, 	XK_m,		    spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
   { MODKEY,           	XK_comma,	    spawn,		SHCMD("mpc prev") },
@@ -194,33 +196,33 @@ static Key keys[] = {
   { MODKEY,           	XK_Delete,	spawn,		SHCMD("dmenurecord kill") },
   { MODKEY,           	XK_Scroll_Lock,	spawn,		SHCMD("killall screenkey || screenkey &") },
 
-  { 0, XF86XK_AudioMute,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
-  { 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
-  { 0, XF86XK_AudioLowerVolume,	spawn,		SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)") },
-  { 0, XF86XK_AudioPrev,		spawn,		SHCMD("mpc prev") },
-  { 0, XF86XK_AudioNext,		spawn,		SHCMD("mpc next") },
-  { 0, XF86XK_AudioPause,		spawn,		SHCMD("mpc pause") },
-  { 0, XF86XK_AudioPlay,		spawn,		SHCMD("mpc play") },
-  { 0, XF86XK_AudioStop,		spawn,		SHCMD("mpc stop") },
-  { 0, XF86XK_AudioRewind,       	spawn,		SHCMD("mpc seek -10") },
-  { 0, XF86XK_AudioForward,      	spawn,		SHCMD("mpc seek +10") },
-  { 0, XF86XK_AudioMedia,        	spawn,		SHCMD(TERMINAL " -e ncmpcpp") },
-  { 0, XF86XK_AudioMicMute,      	spawn,		SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
-  { 0, XF86XK_PowerOff,          	spawn,		SHCMD("sysact") },
-  { 0, XF86XK_Calculator,        	spawn,		SHCMD(TERMINAL " -e bc -l") },
-  { 0, XF86XK_Sleep,             	spawn,		SHCMD("sudo -A zzz") },
-  { 0, XF86XK_WWW,               	spawn,		SHCMD("$BROWSER") },
-  { 0, XF86XK_DOS,               	spawn,		SHCMD(TERMINAL) },
-  { 0, XF86XK_ScreenSaver,       	spawn,		SHCMD("slock & xset dpms force off; mpc pause; pauseallmpv") },
-  { 0, XF86XK_TaskPane,          	spawn,		SHCMD(TERMINAL " -e htop") },
-  { 0, XF86XK_Mail,              	spawn,		SHCMD(TERMINAL " -e neomutt ; pkill -RTMIN+12 dwmblocks") },
-  { 0, XF86XK_MyComputer,        	spawn,		SHCMD(TERMINAL " -e lf /") },
-  { 0, XF86XK_Launch1,           	spawn,		SHCMD("xset dpms force off") },
-  { 0, XF86XK_TouchpadToggle,    	spawn,		SHCMD("(synclient | grep 'TouchpadOff.*1' && synclient TouchpadOff=0) || synclient TouchpadOff=1") },
-  { 0, XF86XK_TouchpadOff,       	spawn,		SHCMD("synclient TouchpadOff=1") },
-  { 0, XF86XK_TouchpadOn,        	spawn,		SHCMD("synclient TouchpadOff=0") },
-  { 0, XF86XK_MonBrightnessUp,   	spawn,		SHCMD("xbacklight -inc 15") },
-  { 0, XF86XK_MonBrightnessDown, 	spawn,		SHCMD("xbacklight -dec 15") },
+  { 0, XF86XK_AudioMute,		 spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
+  { 0, XF86XK_AudioRaiseVolume,	 spawn,		SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
+  { 0, XF86XK_AudioLowerVolume,	 spawn,		SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)") },
+  { 0, XF86XK_AudioPrev,		 spawn,		SHCMD("mpc prev") },
+  { 0, XF86XK_AudioNext,		 spawn,		SHCMD("mpc next") },
+  { 0, XF86XK_AudioPause,		 spawn,		SHCMD("mpc pause") },
+  { 0, XF86XK_AudioPlay,		 spawn,		SHCMD("mpc play") },
+  { 0, XF86XK_AudioStop,		 spawn,		SHCMD("mpc stop") },
+  { 0, XF86XK_AudioRewind,       spawn,		SHCMD("mpc seek -10") },
+  { 0, XF86XK_AudioForward,      spawn,		SHCMD("mpc seek +10") },
+  { 0, XF86XK_AudioMedia,        spawn,		SHCMD(TERMINAL " -e ncmpcpp") },
+  { 0, XF86XK_AudioMicMute,      spawn,		SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
+  { 0, XF86XK_PowerOff,          spawn,		SHCMD("sysact") },
+  { 0, XF86XK_Calculator,        spawn,		SHCMD(TERMINAL " -e bc -l") },
+  { 0, XF86XK_Sleep,             spawn,		SHCMD("sudo -A zzz") },
+  { 0, XF86XK_WWW,               spawn,		SHCMD("$BROWSER") },
+  { 0, XF86XK_DOS,               spawn,		SHCMD(TERMINAL) },
+  { 0, XF86XK_ScreenSaver,       spawn,		SHCMD("slock & xset dpms force off; mpc pause; pauseallmpv") },
+  { 0, XF86XK_TaskPane,          spawn,		SHCMD(TERMINAL " -e htop") },
+  { 0, XF86XK_Mail,              spawn,		SHCMD(TERMINAL " -e neomutt ; pkill -RTMIN+12 dwmblocks") },
+  { 0, XF86XK_MyComputer,        spawn,		SHCMD(TERMINAL " -e lf /") },
+  { 0, XF86XK_Launch1,           spawn,		SHCMD("xset dpms force off") },
+  { 0, XF86XK_TouchpadToggle,    spawn,		SHCMD("(synclient | grep 'TouchpadOff.*1' && synclient TouchpadOff=0) || synclient TouchpadOff=1") },
+  { 0, XF86XK_TouchpadOff,       spawn,		SHCMD("synclient TouchpadOff=1") },
+  { 0, XF86XK_TouchpadOn,        spawn,		SHCMD("synclient TouchpadOff=0") },
+  { 0, XF86XK_MonBrightnessUp,   spawn,		SHCMD("xbacklight -inc 15") },
+  { 0, XF86XK_MonBrightnessDown, spawn,		SHCMD("xbacklight -dec 15") },
 };
 
 static Button buttons[] = {
@@ -233,6 +235,7 @@ static Button buttons[] = {
   { ClkStatusText,        0,              Button5,        sigdwmblocks,   {.i = 5} },
   { ClkStatusText,        ShiftMask,      Button1,        sigdwmblocks,   {.i = 6} },
 #endif
+
   { ClkStatusText,        ShiftMask,      Button3,        spawn,          SHCMD(TERMINAL " -e nvim ~/.local/src/dwmblocks/config.h") },
   { ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
   { ClkClientWin,         MODKEY,         Button2,        defaultgaps,	{0} },
@@ -241,7 +244,8 @@ static Button buttons[] = {
   { ClkTagBar,            0,              Button3,        toggleview,     {0} },
   { ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
   { ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
-  { ClkTagBar,		0,		Button4,	shiftview,	{.i = -1} },
-  { ClkTagBar,		0,		Button5,	shiftview,	{.i = 1} },
-  { ClkRootWin,		0,		Button2,	togglebar,	{0} },
+
+  { ClkTagBar,		0,	  Button4,	shiftview,	{.i = -1} },
+  { ClkTagBar,		0,	  Button5,	shiftview,	{.i = 1} },
+  { ClkRootWin,		0,	  Button2,	togglebar,	{0} },
 };

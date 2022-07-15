@@ -57,22 +57,34 @@ ff_widegaps(const Arg *arg)
 	ff_gaps_switch = !ff_gaps_switch;
 }
 
-/* static void */
-/* incrgaps(const Arg *arg) */
-/* { */
-/* 	setgaps( */
-/* 		selmon->gappoh + arg->i, */
-/* 		selmon->gappov + arg->i, */
-/* 		selmon->gappih + arg->i, */
-/* 		selmon->gappiv + arg->i */
-/* 	); */
-/* } */
+static void
+ff_incrgaps_h(const Arg *arg)
+{
+	setgaps(
+		selmon->gappoh + arg->i,
+		gappov,
+		gappih,
+		gappiv
+	);
+
+}
 
 
 static void
 ff_incrgaps_v(const Arg *arg)
 {
-  setgaps(gappoh, selmon->gappov + arg->i, gappih, gappiv);
+  setgaps(gappoh,
+          selmon->gappov + arg->i,
+          gappih,
+          gappiv);
+
+
+	/* setgaps( */
+	/* 	selmon->gappoh + arg->i, */
+	/* 	selmon->gappov + arg->i, */
+	/* 	selmon->gappih + arg->i, */
+	/* 	selmon->gappiv + arg->i */
+	/* ); */
 }
 
 // TODO: fix this so it works properly
