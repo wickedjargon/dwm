@@ -35,13 +35,6 @@ setgaps(int oh, int ov, int ih, int iv)
 	arrange(selmon);
 }
 
-/* static void */
-/* togglegaps(const Arg *arg) */
-/* { */
-/* 	enablegaps = !enablegaps; */
-/* 	arrange(NULL); */
-/* } */
-
 static void
 defaultgaps(const Arg *arg)
 {
@@ -78,13 +71,6 @@ ff_incrgaps_v(const Arg *arg)
           selmon->gappih,
           selmon->gappiv);
 }
-
-// TODO: fix this so it works properly
-/* static void */
-/* ff_incrgaps_h(const Arg *arg) */
-/* { */
-/*   setgaps(selmon->gappoh + arg->i, gappov, selmon->gappih + arg->i, gappiv); */
-/* } */
 
 static void
 getgaps(Monitor *m, int *oh, int *ov, int *ih, int *iv, unsigned int *nc)
