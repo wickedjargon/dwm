@@ -156,9 +156,9 @@ static Key keys[] = {
   { MODKEY|ShiftMask,   XK_y,		    ff_incrgaps_h,	{.i = -3 } },
   { MODKEY,           	XK_b,		    togglebar,	{0} },
 
-{ 0, XF86XK_AudioMute,        spawn, SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle; pkill -RTMIN+4 dwmblocks") },
-{ 0, XF86XK_AudioRaiseVolume, spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%;   pkill -RTMIN+4 dwmblocks") },
-{ 0, XF86XK_AudioLowerVolume, spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%;   pkill -RTMIN+4 dwmblocks") },
+  { 0, XF86XK_AudioMute,        spawn, SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle;  pkill -RTMIN+4 dwmblocks") },
+  { 0, XF86XK_AudioRaiseVolume, spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%;   pkill -RTMIN+4 dwmblocks") },
+  { 0, XF86XK_AudioLowerVolume, spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%;   pkill -RTMIN+4 dwmblocks") },
   { 0, XF86XK_AudioPrev,		 spawn,		SHCMD("mpc prev") },
   { 0, XF86XK_AudioNext,		 spawn,		SHCMD("mpc next") },
   { 0, XF86XK_AudioPause,		 spawn,		SHCMD("mpc pause") },
