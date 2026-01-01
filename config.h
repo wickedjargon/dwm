@@ -123,16 +123,16 @@ static Key keys[] = {
   TAGKEYS(			XK_5,		4)
   TAGKEYS(			XK_6,		5)
 
-  { MODKEY,           	XK_BackSpace,	spawn,		SHCMD("sysact") },
-  { MODKEY,           	XK_c,	spawn,		SHCMD("sysrun") },
-  { MODKEY, XK_minus, spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%; pkill -RTMIN+4 dwmblocks") },
-  { MODKEY, XK_equal, spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%; pkill -RTMIN+4 dwmblocks") },
+  { MODKEY,           	XK_BackSpace,	spawn,		SHCMD("dmenu-system") },
+  /* { MODKEY,           	XK_c,	spawn,		SHCMD("dmenu-commands") }, */
+  { MODKEY, XK_minus, spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%;  pkill -RTMIN+4 dwmblocks") },
+  { MODKEY, XK_equal, spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%;  pkill -RTMIN+4 dwmblocks") },
   { MODKEY, XK_0,     spawn, SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle; pkill -RTMIN+4 dwmblocks") },
   { MODKEY,           	XK_p,		killclient,	{0} },
   { MODKEY,		        XK_m,		spawn,		SHCMD("emacsclient -c") },
   { MODKEY,             XK_n,		switchcol,	{0} },
   { MODKEY,             XK_o,		spawn, SHCMD("xmouseless") },
-  { MODKEY,           	XK_w,		spawn,		SHCMD("sysbrowser") },
+  { MODKEY,           	XK_w,		spawn,		SHCMD("dmenu-browser") },
   { MODKEY,           	XK_t,		setlayout,	{.v = &layouts[1]} },
   { MODKEY|ShiftMask, 	XK_t,		setlayout,	{.v = &layouts[2]} },
   { MODKEY,           	XK_r,		setlayout,	{.v = &layouts[5]} },
@@ -148,13 +148,15 @@ static Key keys[] = {
   { MODKEY,	            XK_l,			view_adjacent,	{ .i = +1 } },
   { MODKEY|ShiftMask, 	XK_l,		    setmfact,      	{.f = +0.05} },
   { MODKEY|ShiftMask, 	XK_h,		    setmfact,	{.f = -0.05} },
+  { MODKEY,           	XK_i,	spawn,		SHCMD("dmenu-wifi") },
   { MODKEY,           	XK_Return,	    spawn,		{.v = termcmd } },
   { MODKEY|ShiftMask, 	XK_Return,	    togglescratch,	{.ui = 0} },
   { MODKEY,           	XK_x,		    ff_incrgaps_v,	{.i = +3 } },
   { MODKEY|ShiftMask,   XK_x,		    ff_incrgaps_v,	{.i = -3 } },
   { MODKEY,             XK_y,		    ff_incrgaps_h,	{.i = +3 } },
   { MODKEY|ShiftMask,   XK_y,		    ff_incrgaps_h,	{.i = -3 } },
-  { MODKEY,           	XK_b,		    togglebar,	{0} },
+  { MODKEY|ShiftMask,   XK_b,		    togglebar,	{0} },
+  { MODKEY,           	XK_b,	spawn,		SHCMD("dmenu-commands") },
 
   { 0, XF86XK_AudioMute,        spawn, SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle;  pkill -RTMIN+4 dwmblocks") },
   { 0, XF86XK_AudioRaiseVolume, spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%;   pkill -RTMIN+4 dwmblocks") },
@@ -168,7 +170,7 @@ static Key keys[] = {
   { 0, XF86XK_AudioForward,      spawn,		SHCMD("mpc seek +10") },
   { 0, XF86XK_AudioMedia,        spawn,		SHCMD(TERMINAL " -e ncmpcpp") },
   { 0, XF86XK_AudioMicMute,      spawn,		SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
-  { 0, XF86XK_PowerOff,          spawn,		SHCMD("sysact") },
+  { 0, XF86XK_PowerOff,          spawn,		SHCMD("dmenu-system") },
   { 0, XF86XK_Calculator,        spawn,		SHCMD("st -e python") },
   { 0, XF86XK_Sleep,             spawn,		SHCMD("sudo -A zzz") },
   { 0, XF86XK_WWW,               spawn,		SHCMD("zen-browser") },
@@ -181,8 +183,8 @@ static Key keys[] = {
   { 0, XF86XK_TouchpadToggle,    spawn,		SHCMD("(synclient | grep 'TouchpadOff.*1' && synclient TouchpadOff=0) || synclient TouchpadOff=1") },
   { 0, XF86XK_TouchpadOff,       spawn,		SHCMD("synclient TouchpadOff=1") },
   { 0, XF86XK_TouchpadOn,        spawn,		SHCMD("synclient TouchpadOff=0") },
-  { 0, XF86XK_MonBrightnessUp,   spawn, SHCMD("brightnessctl set +5%") },
-  { 0, XF86XK_MonBrightnessDown, spawn, SHCMD("brightnessctl set 5%-") },
+  { 0, XF86XK_MonBrightnessUp,   spawn, SHCMD("brightnessctl set +5% ; pkill -RTMIN+6 dwmblocks") },
+  { 0, XF86XK_MonBrightnessDown, spawn, SHCMD("brightnessctl set 5%- ; pkill -RTMIN+6 dwmblocks") },
 };
 
 static Button buttons[] = {
