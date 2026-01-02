@@ -124,7 +124,7 @@ static Key keys[] = {
   TAGKEYS(			XK_6,		5)
 
   { MODKEY,           	XK_BackSpace,	spawn,		SHCMD("dmenu-system") },
-  /* { MODKEY,           	XK_c,	spawn,		SHCMD("dmenu-commands") }, */
+  { MODKEY,           	XK_c,	spawn,		SHCMD("clipmenu") },
   { MODKEY, XK_minus, spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%;  pkill -RTMIN+4 dwmblocks") },
   { MODKEY, XK_equal, spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%;  pkill -RTMIN+4 dwmblocks") },
   { MODKEY, XK_0,     spawn, SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle; pkill -RTMIN+4 dwmblocks") },
