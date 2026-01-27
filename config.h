@@ -149,6 +149,7 @@ static Key keys[] = {
   { MODKEY|ShiftMask, 	XK_l,		    setmfact,      	{.f = +0.05} },
   { MODKEY|ShiftMask, 	XK_h,		    setmfact,	{.f = -0.05} },
   { MODKEY,           	XK_i,	spawn,		SHCMD("dmenu-wifi-menu") },
+  { MODKEY,           	XK_v,	spawn,		SHCMD("dmenu-virtual-machines") },
   { MODKEY,           	XK_Return,	    spawn,		{.v = termcmd } },
   { MODKEY|ShiftMask, 	XK_Return,	    togglescratch,	{.ui = 0} },
   { MODKEY,           	XK_x,		    ff_incrgaps_v,	{.i = +3 } },
